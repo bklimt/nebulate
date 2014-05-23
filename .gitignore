@@ -1,0 +1,10 @@
+*.swp
+*.pyc
+
+data/
+photos/
+flickr/
+flickr_photos/
+
+auth.json
+config.json
