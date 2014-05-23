@@ -1,9 +1,15 @@
 
-from flickr import flickr
+import errno
 import json
 import os
 
-os.mkdir('./flickr')
+from flickr import flickr
+
+try:
+  os.mkdir("./flickr")
+except OSError, err:
+  if err.errno != errno.EEXIST:
+    raise
 
 def get_token_and_nsid():
   try:

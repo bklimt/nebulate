@@ -1,11 +1,20 @@
 
+import errno
 import json
 import os
 import urllib
 
-os.mkdir("./flickr_photos")
+try:
+  os.mkdir("./flickr_photos")
+except OSError, err:
+  if err.errno != errno.EEXIST:
+    raise
 
-for filename in os.listdir("./flickr/"):
+filenames = os.listdir("./flickr/")
+total = len(filenames)
+
+for i, filename in enumerate(filenames):
+  print "File %d of %d" % (i, total)
   f = file("./flickr/" + filename)
   data = json.loads(f.read())
   print data["id"]

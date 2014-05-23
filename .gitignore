@@ -5,6 +5,7 @@ data/
 photos/
 flickr/
 flickr_photos/
+flickr_photosets/
 
 auth.json
 config.json
