@@ -2,6 +2,7 @@
 import errno
 import json
 import os
+import os.path
 import urllib
 
 try:
@@ -19,7 +20,8 @@ for i, filename in enumerate(filenames):
   data = json.loads(f.read())
   print data["id"]
   if data.has_key("file"):
-    continue
+    if os.path.exists(data["file"]):
+      continue
 
   url = data["url_o"]
   print url
@@ -28,7 +30,7 @@ for i, filename in enumerate(filenames):
 
   name2 = "./flickr_photos/" + data["id"] + "." + ext
   print name2
-  f2 = file(name2, "w")
+  f2 = file(name2, "wb")
   f2.write(image)
   f2.close()
 
